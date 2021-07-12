@@ -12,7 +12,49 @@ int DeleteSubString(char *s,int pos,int len) {
 	}
 	*s='\0';
 }
+int my_strlen1_1(char *str){
 
+	char *p=str;
+
+	int index=0;
+
+	while((*p)!='\0'&&(++index)&&(p++));
+
+	return index;
+}
+void t1_1(){
+    printf("字符串对象为:hello c program\n"); 
+   
+	char *str="hello c program";
+
+	int num=0;
+
+	num=my_strlen1_1(str);
+
+	printf("长度为:num:%d\n",num);
+}
+void strcpy1_2(char *s1,char *s2)
+{
+ while(*s1 !='\0'){
+  s1++;
+}
+ while(*s2 !='\0'){
+  *s1=*s2;
+   s1++;
+   s2++;
+ }
+ *s1='\0';
+}
+void t1_2()
+{
+ char s1[20]="computer\n";
+ char * s2="science";
+printf("old string:\n %s %s\n",s1,s2);
+ char * s3=s1;
+ printf("new string:\n");
+ strcpy1_2(s1,s2);
+ printf(" %s %s\n",s1,s2);
+}
 int t1_16() {
 	char str[100] = "";
 	int a,b;
@@ -28,7 +70,24 @@ int t1_16() {
 	printf("before delete: %s\n",str);
 	return 0;
 }
+void my_strcat1_3(char *s1,char *s2){
+	int size = strlen(s1);
+	s1+=size;
+	while(*s2!='\0'){
+		*s1++=*s2++;
+	}
+}
+void t1_3(){
+	char s1[]="computer";
 
+	char s2[]="science";
+
+	printf("s1:%s  s2:%s\n",s1,s2);
+
+	my_strcat1_3(s1,s2);
+
+	printf("s:%s\n",s1);
+}
 char firstsingle(char *arr) {
 	char asc[256]= {0};
 	int i=0;
@@ -43,6 +102,127 @@ char firstsingle(char *arr) {
 		}
 	}
 }
+ int my_strcmp1_4(char *s1,char *s2){
+	while((*s1!='\0')||(*s2!='\0')){
+		if(*s1>*s2)	return 1;
+		else if(*s1<*s2) return -1;
+	}
+	return 0;
+}
+void t1_4(){
+	char str1[]="computer";
+	char str2[]="science";
+    printf("s1=%s s2=%s\n",str1,str2);
+	if(my_strcmp1_4(str1,str2)==-1) printf("s1<s2\n");
+	else if(my_strcmp1_4(str1,str2)==1) printf("s1>s2\n");
+	else	printf("s1==s2\n");
+}
+void stradd1_5(char *s)
+{
+ for(;*s;s++)
+  if(*s!=' ')
+    (*s)++;
+}
+void t1_5()
+{
+ char s[]="i love you";
+ puts(s);
+ stradd1_5(s);
+ puts(s);
+ }
+int strturnsmall1_6(char *s1)
+{
+  for(;*s1;s1++)
+  if((*s1)>'A'&& (*s1)<'Z')
+      (*s1)=(*s1)+32; 
+}
+void t1_6()
+{
+  char s1[]="MY TELEphOne NUmbEr IS #13776543210!";
+  puts(s1);
+  strturnsmall1_6(s1);
+  puts(s1);    
+} 
+int strturn1_7(char *s1)
+{
+ char input[]="she is a pretty girl!";
+ char output[100]={'\0'};
+ int i,len;
+ len=strlen(input);
+ printf("%s\n",input);
+ for(i=0;i<len;i++)
+{
+  if(input[0]!=' ')
+   input[0]-=32;
+  if(input[i]==' ')
+   input[i+1]-=32;
+  output[i]=input[i];
+ }
+ printf("%s\n",output);
+}
+void t1_7()
+{
+ char input[]="she is a pretty girl!";
+ strturn1_7(input);
+}
+int strwordsnum1_8(char *s1)
+{
+char input[]="i want to be a programmer";
+ char output[100]={'\0'};
+ int i,len;
+ int n=1;
+ len=strlen(input);
+ printf("%s\n",input);
+ for(i=0;i<len;i++)
+ {
+  if(input[i]==' ')
+    n++;
+ }
+ printf("word number:%d\n",n);
+}
+void t1_8()
+{
+ char input[]="i want to be a programmer";
+ strwordsnum1_8(input);
+}
+	void t1_9()
+	{
+	char s[] = " she  is     a  pretty girl!";
+	char buf[30];
+	int j=0;
+	printf("old string is:\n%s\n",s);
+	for (int i=0; i<sizeof(s); i++)
+	{
+	if (s[i]!=' ' || s[i+1]!=' '){
+	buf[j] = s[i];
+	j++;
+	}
+	}
+	j = 0;
+	if (buf[0] == ' ') {
+	while (buf[j] != '\0'){
+	buf[j] = buf[j+1];
+	j++;
+	}
+	}
+	printf("now string is:\n%s\n", buf);
+	}
+void t1_10()
+{
+ char s[]="father and mother i love you";
+ char s1[20];
+ int j=1;
+ printf("old string: %s\n",s);
+ for(int i=0;i<sizeof(s);i++)
+{
+  if(s[i]==' '){
+  s1[j]=s[i+1];
+   j++;
+ }
+}
+ s1[0]=s[0];
+ printf("new string: %s\n",s1);
+}
 int t1_20() {
 	char arr[100];
 	char ret;
@@ -54,8 +234,6 @@ int t1_20() {
 	printf("%c\n",ret);
 	return 0;
 }
-
-
 int t1_15() {
 	char s[100] = "";
 	char s1[100];
@@ -304,36 +482,36 @@ int main() {
 				int a;
 				scanf("%d",&a);
 				switch(a) {
-					case 1:
-					case 2:
-						case 3:
-					case 4:
-					case 5:
-					case 6:
-					case 7:
-					case 8:
-					case 9:
-					case 10:
-					case 11:
-					case 12:
+					case 1:system("clear"); t1_1();break;
+					case 2:system("clear");t1_2();break; 
+						case 3:system("clear");t1_3();break; 
+					case 4:system("clear"); t1_4();break; 
+					case 5:system("clear"); t1_5();break; 
+					case 6:system("clear"); t1_6();break; 
+					case 7:system("clear"); t1_7();break; 
+					case 8:system("clear"); t1_8();break; 
+					case 9:system("clear"); t1_9();break; 
+					case 10:system("clear"); t1_10();break; 
+					case 11:system("clear");// t1_11();break; 
+					case 12:system("clear");// t1_12();break; 
 					case 13: system("clear"); t1_13();break;
 					case 14: system("clear"); t1_14();break;
 					case 15: system("clear");  t1_15();break;
 					case 16:  system("clear");t1_16();break;
-					case 17:
-					case 18:
-					case 19:
+					case 17:system("clear");// t1_17();break;
+					case 18:system("clear");// t1_18();break;
+					case 19:system("clear");// t1_19();break;
 					case 20:  system("clear");t1_20();break;
           case 21: system("clear");t1_21();break;
-					case 22:
-					case 23:
-					case 24:
-					case 25:
-					case 26:
-					case 27:
-					case 28:
-					case 29:
-					case 30:	break;
+					case 22:system("clear"); //t1_22();break;
+					case 23:system("clear"); //t1_23();break;
+					case 24:system("clear");// t1_24();break;
+					case 25:system("clear");// t1_25();break;
+					case 26:system("clear");// t1_26();break;
+					case 27:system("clear");// t1_27();break;
+					case 28:system("clear");// t1_28();break;
+					case 29:system("clear");// t1_29();break;
+					case 30:system("clear");//t1_30();break;
 				}
 				break;
 			case 2:system("clear");
@@ -341,19 +519,18 @@ int main() {
 				int b;
 				scanf("%d",&b);
 				switch(b) {
-					case 1:
-						printf("acacac\n");
-						break;
-					case 2:
-					case 4:
-					case 5:
-					case 6:
-					case 7:
-					case 8:
-					case 9:
-					case 10:
-					case 11:
-					case 12:
+					case 1:system("clear");//t2_1();break;
+					case 2:system("clear"); //t2_2();break;
+          case 3:system("clear");//t2_3();break;
+					case 4:system("clear"); //t2_4();break;
+					case 5:system("clear"); //t2_5();break;
+					case 6:system("clear"); //t2_6();break;
+					case 7:system("clear"); //t2_7();break;
+					case 8:system("clear"); //t2_8();break;
+					case 9:system("clear"); //t2_9();break;
+					case 10:system("clear");// t2_10();break;
+					case 11:system("clear");// t2_11();break;
+					case 12:system("clear"); //t2_12();break;
 						break;
 				}
 				break;
@@ -362,15 +539,15 @@ int main() {
 				int c;
 				scanf("%d",&c);
 				switch(c) {
-					case 1:
-					case 2:
-					case 4:
+					case 1:system("clear");//t3_1();break; 
+					case 2:system("clear"); //t3_2();break;
+        	case 3:system("clear"); //t3_3();break;
+					case 4:system("clear"); //t3_4();break;
 					case 5:system("clear");	t3_5();	break;
-					case 6:
-					case 7:
-					case 8:
-					case 9:
-						break;
+					case 6:system("clear"); //t3_6();break;
+					case 7:system("clear"); //t3_7();break;
+					case 8:system("clear"); //t3_8();break;
+					case 9:system("clear"); //t3_9();break;
 					case 18:system("clear");t3_18();break;
 				}
 				break;
@@ -379,14 +556,15 @@ int main() {
 				int d;
 				scanf("%d",&d);
 				switch(d) {
-					case 1:
-					case 2:
-					case 4:
-					case 5:
-					case 6:
-					case 7:
-					case 8:
-					case 9:
+					case 1:system("clear"); //t4_1();break;
+					case 2:system("clear"); //t4_2();break;
+					case 3:system("clear"); //t4_3();break;
+          case 4:system("clear"); //t4_4();break;
+					case 5:system("clear"); //t4_5();break;
+					case 6:system("clear"); //t4_6();break;
+					case 7:system("clear"); //t4_7();break;
+					case 8:system("clear"); //t4_8();break;
+					case 9:system("clear"); //t4_9();break;
 						break;
 				}
 				break;
